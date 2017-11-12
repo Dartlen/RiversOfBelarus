@@ -1,0 +1,92 @@
+{
+  "project_info": {
+    "project_number": "763716829814",
+    "firebase_url": "https://rivers-48078.firebaseio.com",
+    "project_id": "rivers-48078",
+    "storage_bucket": "rivers-48078.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763716829814:android:1c679c5020f8f998",
+        "android_client_info": {
+          "package_name": "by.test.dartlen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763716829814-909lv34oi51hcp8tmbpkb1faurln45en.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwIg_V2qAMXZkRSL_73brDDnmVW6it0TQ"
+        },
+        {
+          "current_key": "AIzaSyD2Ql9O3BlxLfrLQFkuPI1KHU4YS82gkJg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763716829814:android:52c88b8637b84c4a",
+        "android_client_info": {
+          "package_name": "by.project.dartlen.riversofbelarus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763716829814-s46jn6mgf2frj0k6g15i3ic6n2gf9div.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "by.project.dartlen.riversofbelarus",
+            "certificate_hash": "9c1e201b8bd90ace3eb65b1ba46438a15910141d"
+          }
+        },
+        {
+          "client_id": "763716829814-909lv34oi51hcp8tmbpkb1faurln45en.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwIg_V2qAMXZkRSL_73brDDnmVW6it0TQ"
+        },
+        {
+          "current_key": "AIzaSyD2Ql9O3BlxLfrLQFkuPI1KHU4YS82gkJg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763716829814-909lv34oi51hcp8tmbpkb1faurln45en.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

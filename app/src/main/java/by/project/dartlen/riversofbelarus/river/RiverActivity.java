@@ -1,7 +1,6 @@
 package by.project.dartlen.riversofbelarus.river;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
 import javax.inject.Inject;
 
@@ -29,12 +28,13 @@ public class RiverActivity extends DaggerAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rivers);
 
-        RiverFragment x = (RiverFragment) getFragmentManager().findFragmentById(R.id.contentFrame);
+        RiverFragment x = (RiverFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
+
         if (x == null) {
             x = riverFragmentProvider.get();
-            getFragmentManager().beginTransaction().add(x,"").commit();
+            ActivityUtils.addFragmentToActivity(
+                    getSupportFragmentManager(), x, R.id.contentFrame,"sdfghjkl");
         }
     }
-
 
 }

@@ -1,10 +1,12 @@
 package by.project.dartlen.riversofbelarus.river;
 
+import java.util.HashSet;
 import java.util.List;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 
+import by.project.dartlen.riversofbelarus.data.LoadPostsCallback;
 import by.project.dartlen.riversofbelarus.data.LoadRiversCallback;
 import by.project.dartlen.riversofbelarus.data.RiversRepository;
 import by.project.dartlen.riversofbelarus.data.remote.Post;
@@ -40,10 +42,10 @@ final public class RiverPresenter implements RiversContract.Presenter{
     }
 
     @Override
-    public void loadpost(final List<Post> list) {
-        mRiversRepository.getPosts(new LoadRiversCallback() {
+    public void loadpost(final HashSet<String> list) {
+        mRiversRepository.getRivers(new LoadRiversCallback() {
             @Override
-            public void onRiversLoaded(List<Post> riversList) {
+            public void onRiversLoaded(HashSet<String> riversList) {
                 mRiversView.showPosts(riversList);
             }
 

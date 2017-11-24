@@ -15,6 +15,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import by.project.dartlen.riversofbelarus.data.LoadPostsCallback;
 import by.project.dartlen.riversofbelarus.data.LoadRiversCallback;
 
 /***
@@ -34,7 +35,7 @@ public class RiversRemoteData {
     @Inject
     public RiversRemoteData() {}
 
-    public void getPosts(@NotNull final LoadRiversCallback callback){
+    public void getPosts(@NotNull final LoadPostsCallback callback){
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         mRef = database.getReference();
         mRef.addValueEventListener(new ValueEventListener() {

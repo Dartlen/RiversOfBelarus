@@ -86,6 +86,53 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763716829814:android:a97b9c771a89b2f6",
+        "android_client_info": {
+          "package_name": "by.test.dartlen.gallery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763716829814-b6orjiq21gar853nkv1j6v5v45valn0v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "by.test.dartlen.gallery",
+            "certificate_hash": "9c1e201b8bd90ace3eb65b1ba46438a15910141d"
+          }
+        },
+        {
+          "client_id": "763716829814-909lv34oi51hcp8tmbpkb1faurln45en.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwIg_V2qAMXZkRSL_73brDDnmVW6it0TQ"
+        },
+        {
+          "current_key": "AIzaSyD2Ql9O3BlxLfrLQFkuPI1KHU4YS82gkJg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763716829814-909lv34oi51hcp8tmbpkb1faurln45en.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

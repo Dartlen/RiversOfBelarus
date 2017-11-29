@@ -1,4 +1,4 @@
-package by.project.dartlen.riversofbelarus.river;
+package by.project.dartlen.riversofbelarus.rivers;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,10 +10,10 @@ import by.project.dartlen.riversofbelarus.R;
  * Created by Dartlen on 23.11.2017.
  */
 
-public class ViewHolder extends RecyclerView.ViewHolder{
+public class RiversViewHolder extends RecyclerView.ViewHolder{
     public TextView mTextView;
 
-    public ViewHolder(View v){
+    public RiversViewHolder(View v){
         super(v);
         mTextView=(TextView)v.findViewById(R.id.info_text);
     }

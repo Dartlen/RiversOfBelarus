@@ -21,19 +21,39 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class RiversRepository {
 
     final private RiversRemoteData mRiversRemoteData;
-    private HashSet<String> listRivers = new HashSet<String>();
+    private HashSet<String> listRivers = new HashSet<>();
+    private HashSet<String> listPosts = new HashSet<>();
+
     @Inject
-    RiversRepository(@Remote RiversRemoteData riversRepository){ //
+    RiversRepository(@Remote RiversRemoteData riversRepository){
         mRiversRemoteData = riversRepository;
     }
 
     public void getRivers(final @NotNull LoadRiversCallback callback){
-        mRiversRemoteData.getPosts(new LoadPostsCallback() {
+        mRiversRemoteData.getPosts(new LoadDataCallback() {
             @Override
             public void onRiversLoaded(List<Post> riversList) {
                 for(Post x:riversList)
                     listRivers.add(x.getRiver());
                 callback.onRiversLoaded(listRivers);
+            }
+
+            @Override
+            public void onDataNotAvailable(String error) {
+                callback.onDataNotAvailable(error);
+            }
+        });
+    }
+
+    public void getPosts(final @NotNull LoadPostsCallback callback, final String riverName){
+        mRiversRemoteData.getPosts(new LoadDataCallback() {
+            @Override
+            public void onRiversLoaded(List<Post> riversList) {
+                listPosts.clear();
+                for(Post x:riversList)
+                    if(x.getRiver().equals(riverName))
+                        listPosts.add(x.getCity());
+                callback.onRiversLoaded(listPosts);
             }
 
             @Override

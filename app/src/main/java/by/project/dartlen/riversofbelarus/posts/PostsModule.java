@@ -1,4 +1,4 @@
-package by.project.dartlen.riversofbelarus.river;
+package by.project.dartlen.riversofbelarus.posts;
 
 import by.project.dartlen.riversofbelarus.di.scopes.ActivityScope;
 import by.project.dartlen.riversofbelarus.di.scopes.FragmentScope;
@@ -7,15 +7,15 @@ import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
 /***
- * Created by Dartlen on 21.11.2017.
+ * Created by Dartlen on 26.11.2017.
  */
 @Module
-public abstract class RiverModule{
-    
+public abstract class PostsModule {
+
     @FragmentScope
     @ContributesAndroidInjector
-    abstract RiverFragment riverFragment();
-    
+    abstract PostsFragment postsFragment();
+
     @ActivityScope
-    @Binds abstract RiversContract.Presenter riverPresenter(RiverPresenter presenter);
+    @Binds abstract PostsContract.Presenter postsPresenter(PostsPresenter presenter);
 }

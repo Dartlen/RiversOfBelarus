@@ -1,7 +1,6 @@
-package by.project.dartlen.riversofbelarus.river;
+package by.project.dartlen.riversofbelarus.rivers;
 
 import java.util.HashSet;
-import java.util.List;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -9,8 +8,8 @@ import javax.inject.Inject;
 import by.project.dartlen.riversofbelarus.data.LoadPostsCallback;
 import by.project.dartlen.riversofbelarus.data.LoadRiversCallback;
 import by.project.dartlen.riversofbelarus.data.RiversRepository;
-import by.project.dartlen.riversofbelarus.data.remote.Post;
 import by.project.dartlen.riversofbelarus.di.scopes.ActivityScope;
+import ru.terrakok.cicerone.Router;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -25,6 +24,9 @@ final public class RiverPresenter implements RiversContract.Presenter{
     private RiversContract.View mRiversView;
 
     private final RiversRepository mRiversRepository;
+
+    @Inject
+    Router router;
 
     @Inject
     RiverPresenter(RiversRepository riversRepository){
@@ -42,11 +44,11 @@ final public class RiverPresenter implements RiversContract.Presenter{
     }
 
     @Override
-    public void loadpost(final HashSet<String> list) {
+    public void loadRivers(final HashSet<String> list) {
         mRiversRepository.getRivers(new LoadRiversCallback() {
             @Override
             public void onRiversLoaded(HashSet<String> riversList) {
-                mRiversView.showPosts(riversList);
+                mRiversView.showRivers(riversList);
             }
 
             @Override
@@ -54,5 +56,15 @@ final public class RiverPresenter implements RiversContract.Presenter{
 
             }
         });
+    }
+
+    @Override
+    public void onBackCommandClick() {
+        router.exit();
+    }
+
+    @Override
+    public void backToPosts() {
+        router.exit();
     }
 }

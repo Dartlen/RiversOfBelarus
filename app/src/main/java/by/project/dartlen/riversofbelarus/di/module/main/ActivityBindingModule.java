@@ -1,9 +1,11 @@
 package by.project.dartlen.riversofbelarus.di.module.main;
 
-import by.project.dartlen.riversofbelarus.data.RiversRepository;
 import by.project.dartlen.riversofbelarus.di.scopes.ActivityScope;
-import by.project.dartlen.riversofbelarus.river.RiverActivity;
-import by.project.dartlen.riversofbelarus.river.RiverModule;
+import by.project.dartlen.riversofbelarus.postinfo.PostInfoFragment;
+import by.project.dartlen.riversofbelarus.postinfo.PostInfoModule;
+import by.project.dartlen.riversofbelarus.posts.PostsModule;
+import by.project.dartlen.riversofbelarus.rivers.RiverActivity;
+import by.project.dartlen.riversofbelarus.rivers.RiverModule;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
@@ -13,7 +15,8 @@ import dagger.android.ContributesAndroidInjector;
 
 @Module
 public abstract class ActivityBindingModule {
+
     @ActivityScope
-    @ContributesAndroidInjector(modules = RiverModule.class)
+    @ContributesAndroidInjector(modules = {RiverModule.class, PostsModule.class, PostInfoModule.class})
     abstract RiverActivity riverActivity();
 }

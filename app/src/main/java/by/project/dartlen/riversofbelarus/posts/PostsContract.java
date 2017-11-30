@@ -12,7 +12,7 @@ import by.project.dartlen.riversofbelarus.BaseView;
 public interface PostsContract {
     interface Presenter extends BasePresenter<PostsContract.View> {
         void loadPosts(HashSet<String> list);
-        void backToPosts();
+        void onToolbarBackClicked();
         void setRiver(Object river);
     }
 

@@ -37,7 +37,7 @@ public class PostInfoPresenter implements PostInfoContract.Presenter{
     }
 
     @Override
-    public void backToPosts(){
+    public void onToolbarBackClicked(){
         router.exit();
     }
 }

@@ -57,14 +57,9 @@ final public class RiverPresenter implements RiversContract.Presenter{
             }
         });
     }
-
+    
     @Override
-    public void onBackCommandClick() {
-        router.exit();
-    }
-
-    @Override
-    public void backToPosts() {
+    public void onToolbarExitClicked() {
         router.exit();
     }
 }

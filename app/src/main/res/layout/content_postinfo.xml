@@ -8,9 +8,9 @@
     tools:showIn="@layout/fragment_postinfo">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_view_post_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
         android:scrollbars="vertical" />
 

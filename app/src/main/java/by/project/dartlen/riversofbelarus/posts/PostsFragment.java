@@ -40,6 +40,8 @@ public class PostsFragment extends DaggerFragment implements PostsContract.View 
     RecyclerView mRecyclerView;
     RiversAdapter adapter;
 
+    Toolbar toolbar;
+
     @Inject
     public PostsFragment(){}
 
@@ -61,7 +63,7 @@ public class PostsFragment extends DaggerFragment implements PostsContract.View 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_posts, container, false);
 
-        Toolbar toolbar = (Toolbar)getActivity().findViewById(R.id.toolbar);
+        toolbar = (Toolbar)getActivity().findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.back_arrow));
 
         mRecyclerView = root.findViewById(R.id.recyclerView);
@@ -81,7 +83,6 @@ public class PostsFragment extends DaggerFragment implements PostsContract.View 
                     @Override
                     public void onItemClick(View view, int position) {
                         String postName = new ArrayList<>(listData).get(position);
-                        //router.replaceScreen("postInfoFragment", postName);
                         router.navigateTo("postInfoFragment", postName);
                     }
 
@@ -94,9 +95,7 @@ public class PostsFragment extends DaggerFragment implements PostsContract.View 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AppCompatActivity) getActivity()).setSupportActionBar((Toolbar)getActivity().findViewById(R.id.toolbar));
-                ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-                mPostsPresenter.backToPosts();
+                mPostsPresenter.onToolbarBackClicked();
             }
         });
 
@@ -106,6 +105,15 @@ public class PostsFragment extends DaggerFragment implements PostsContract.View 
     @Override
     public void onResume() {
         super.onResume();
+        ((AppCompatActivity) getActivity()).setSupportActionBar((Toolbar)getActivity().findViewById(R.id.toolbar));
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPostsPresenter.onToolbarBackClicked();
+            }
+        });
         mPostsPresenter.takeView(this);
     }
 

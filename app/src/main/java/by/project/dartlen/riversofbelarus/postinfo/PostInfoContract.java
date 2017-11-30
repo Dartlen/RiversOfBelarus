@@ -9,7 +9,7 @@ import by.project.dartlen.riversofbelarus.BaseView;
 
 public interface PostInfoContract {
     interface Presenter extends BasePresenter<PostInfoContract.View>{
-        void backToPosts();
+        void onToolbarBackClicked();
     }
 
     interface View extends BaseView<PostInfoContract.Presenter>{

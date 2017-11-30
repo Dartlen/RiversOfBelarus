@@ -7,4 +7,7 @@
     <color name="colorGreenTree">#00976B</color>
     <color name="colorSun">#FFD18E</color>
     <color name="colorMountain">#FFC4AE</color>
+    <color name="postInfo_colorFirst">#FE8A60</color>
+    <color name="postInfo_colorSecond">#46B6AB</color>
+    <color name="text_color_white">#FFFFFF</color>
 </resources>

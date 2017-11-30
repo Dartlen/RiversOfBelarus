@@ -72,7 +72,6 @@ public class RiverActivity extends DaggerAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rivers);
 
-
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.exit));
         setSupportActionBar(toolbar);

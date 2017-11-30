@@ -58,7 +58,7 @@ public class PostsPresenter implements PostsContract.Presenter{
     }
 
     @Override
-    public void backToPosts() {
+    public void onToolbarBackClicked() {
         router.exit();
     }
 

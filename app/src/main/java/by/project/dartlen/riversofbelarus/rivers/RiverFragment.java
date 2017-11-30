@@ -22,8 +22,6 @@ import by.project.dartlen.riversofbelarus.di.scopes.ActivityScope;
 import dagger.android.support.DaggerFragment;
 import ru.terrakok.cicerone.Router;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 /***
  * Created by Dartlen on 12.11.2017.
  */
@@ -88,9 +86,7 @@ public class RiverFragment extends DaggerFragment implements RiversContract.View
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AppCompatActivity) getActivity()).setSupportActionBar((Toolbar)getActivity().findViewById(R.id.toolbar));
-                ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-                mRiversPresenter.backToPosts();
+                mRiversPresenter.onToolbarExitClicked();
             }
         });
 

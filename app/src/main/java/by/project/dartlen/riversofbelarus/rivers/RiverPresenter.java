@@ -62,4 +62,9 @@ final public class RiverPresenter implements RiversContract.Presenter{
     public void onToolbarExitClicked() {
         router.exit();
     }
+
+    @Override
+    public void onRecyclerViewClicked(String nameRiver) {
+        router.navigateTo("postsFragment", nameRiver);
+    }
 }

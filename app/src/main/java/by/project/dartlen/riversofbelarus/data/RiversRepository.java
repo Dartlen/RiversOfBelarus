@@ -62,4 +62,20 @@ public class RiversRepository {
             }
         });
     }
+
+    public void getPostData(final @NotNull LoadPostDataCallback callback, final String post){
+        mRiversRemoteData.getPosts(new LoadDataCallback() {
+            @Override
+            public void onRiversLoaded(List<Post> riversList) {
+                for(Post x: riversList)
+                    if(x.getCity().equals(post))
+                        callback.onPostDataLoaded(x);
+            }
+
+            @Override
+            public void onDataNotAvailable(String error) {
+                    callback.onDataNotAvailable(error);
+            }
+        });
+    }
 }

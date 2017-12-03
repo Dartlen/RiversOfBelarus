@@ -3,7 +3,9 @@ package by.project.dartlen.riversofbelarus.postinfo;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 
+import by.project.dartlen.riversofbelarus.data.LoadPostDataCallback;
 import by.project.dartlen.riversofbelarus.data.RiversRepository;
+import by.project.dartlen.riversofbelarus.data.remote.Post;
 import by.project.dartlen.riversofbelarus.posts.PostsContract;
 import ru.terrakok.cicerone.Router;
 
@@ -17,6 +19,8 @@ public class PostInfoPresenter implements PostInfoContract.Presenter{
     private PostInfoContract.View mPostInfoView;
 
     private final RiversRepository mRiversRepository;
+
+    private String namePost;
 
     @Inject
     Router router;
@@ -39,5 +43,25 @@ public class PostInfoPresenter implements PostInfoContract.Presenter{
     @Override
     public void onToolbarBackClicked(){
         router.exit();
+    }
+
+    @Override
+    public void setPost(String namePost) {
+        this.namePost = namePost;
+    }
+
+    @Override
+    public void loadPosts() {
+        mRiversRepository.getPostData(new LoadPostDataCallback() {
+            @Override
+            public void onPostDataLoaded(Post postData) {
+                mPostInfoView.showDays(postData);
+            }
+
+            @Override
+            public void onDataNotAvailable(String error) {
+
+            }
+        }, namePost);
     }
 }

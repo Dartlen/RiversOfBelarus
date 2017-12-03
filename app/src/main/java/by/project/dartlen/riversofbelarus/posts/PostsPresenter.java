@@ -43,7 +43,7 @@ public class PostsPresenter implements PostsContract.Presenter{
     }
 
     @Override
-    public void loadPosts(final HashSet<String> list) {
+    public void loadPosts() {
         mRiversRepository.getPosts(new LoadPostsCallback() {
             @Override
             public void onRiversLoaded(HashSet<String> postsList) {
@@ -65,4 +65,10 @@ public class PostsPresenter implements PostsContract.Presenter{
     public void setRiver(Object river){
         riverName=(String)river;
     }
+
+    @Override
+    public void onRecyclerViewClicked(String namePost) {
+        router.navigateTo("postInfoFragment", namePost);
+    }
+
 }

@@ -60,7 +60,6 @@ public class RiversAdapter extends RecyclerView.Adapter<RiversViewHolder>{
     }
 
     public void clearAll(){
-
         mDataset.clear();
     }
 }

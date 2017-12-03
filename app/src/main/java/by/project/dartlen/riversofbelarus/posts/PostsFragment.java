@@ -76,14 +76,14 @@ public class PostsFragment extends DaggerFragment implements PostsContract.View 
 
         mRecyclerView.setAdapter(adapter);
 
-        mPostsPresenter.loadPosts(listData);
+        mPostsPresenter.loadPosts();
 
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), mRecyclerView,
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         String postName = new ArrayList<>(listData).get(position);
-                        router.navigateTo("postInfoFragment", postName);
+                        mPostsPresenter.onRecyclerViewClicked(postName);
                     }
 
                     @Override

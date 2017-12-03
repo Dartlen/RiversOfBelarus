@@ -45,6 +45,7 @@ public class RiverActivity extends DaggerAppCompatActivity {
                 postsFragmentProvider.get().setRiver(data);
                 return postsFragmentProvider.get();
             }else if(screenKey.equals("postInfoFragment")){
+                postInfoFragmentProvider.get().setPost(data);
                 return postInfoFragmentProvider.get();
             }
             return null;

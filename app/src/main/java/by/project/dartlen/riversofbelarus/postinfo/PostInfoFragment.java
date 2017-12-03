@@ -18,6 +18,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.project.dartlen.riversofbelarus.R;
+import by.project.dartlen.riversofbelarus.data.remote.Post;
 import dagger.Binds;
 import dagger.android.support.DaggerFragment;
 import ru.terrakok.cicerone.Router;
@@ -28,6 +29,8 @@ import ru.terrakok.cicerone.Router;
 
 public class PostInfoFragment extends DaggerFragment implements PostInfoContract.View {
 
+    public PostInfoAdapter adapter;
+    public Post dataPost = new Post();
     @Inject
     PostInfoContract.Presenter mPostInfoPresenter;
 
@@ -99,14 +102,12 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        PostInfoAdapter adapter = new PostInfoAdapter();
+        adapter = new PostInfoAdapter(dataPost);
 
         RecyclerView.ItemDecoration mItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), 1);
         mRecyclerView.addItemDecoration(mItemDecoration);
         mRecyclerView.setAdapter(adapter);
-
-
-
+        mPostInfoPresenter.loadPosts();
 
         return root;
     }
@@ -121,5 +122,18 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
     public void onDestroy() {
         super.onDestroy();
         mPostInfoPresenter.dropView();
+    }
+
+    @Override
+    public void setPost(Object namePost) {
+        mPostInfoPresenter.setPost((String)namePost);
+    }
+
+    @Override
+    public void showDays(Post dataPost) {
+        this.dataPost = dataPost;
+        adapter.clearAll();
+        adapter.notifyDataSetChanged();
+        adapter.setPost(dataPost);
     }
 }

@@ -13,6 +13,7 @@ public interface RiversContract {
     interface Presenter extends BasePresenter<View>{
         void loadRivers(HashSet<String> list);
         void onToolbarExitClicked();
+        void onRecyclerViewClicked(String nameRiver);
     }
 
     interface View extends BaseView<Presenter>{

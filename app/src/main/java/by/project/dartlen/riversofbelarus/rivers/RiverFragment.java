@@ -34,9 +34,6 @@ public class RiverFragment extends DaggerFragment implements RiversContract.View
     @Inject
     RiversContract.Presenter mRiversPresenter;
 
-    @Inject
-    Router router;
-
     RecyclerView mRecyclerView;
     RiversAdapter adapter;
 
@@ -72,7 +69,7 @@ public class RiverFragment extends DaggerFragment implements RiversContract.View
             @Override
             public void onItemClick(View view, int position) {
                 String riverName = new ArrayList<>(listData).get(position);
-                router.navigateTo("postsFragment", riverName);
+                mRiversPresenter.onRecyclerViewClicked(riverName);
             }
 
             @Override

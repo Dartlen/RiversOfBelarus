@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/main_background"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color_white"
+                    android:textSize="40sp"
+                    android:gravity="center"
+                    android:text="Гидропосты Республики Беларусь"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btnSignUp"
+                    android:text="@string/signup"
+                    android:textColor="@color/text_color_white"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:buttonColor="@color/btnSignUp"
+                    app:shadowColor="@color/btn_back"
+                    app:shadowEnabled="true"
+                    app:shadowHeight="5dp"
+                    app:cornerRadius="4dp"/>
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btnSignIn"
+                    android:text="@string/signin"
+                    android:textColor="@color/text_color_white"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:buttonColor="@color/btnSignIn"
+                    app:shadowColor="@color/btn_back"
+                    app:shadowEnabled="true"
+                    app:shadowHeight="5dp"
+                    app:cornerRadius="4dp"/>
+
+        </LinearLayout>
+
+
+    
+</RelativeLayout>

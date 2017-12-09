@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Реки Беларуси</string>
+    <string name="signup">SIGN UP</string>
+    <string name="signin">SIGN IN</string>
 </resources>

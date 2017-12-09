@@ -8,6 +8,7 @@ import android.widget.Toast;
 import javax.inject.Inject;
 
 import by.project.dartlen.riversofbelarus.R;
+import by.project.dartlen.riversofbelarus.main.MainFragment;
 import by.project.dartlen.riversofbelarus.postinfo.PostInfoFragment;
 import by.project.dartlen.riversofbelarus.posts.PostsFragment;
 import dagger.Lazy;
@@ -28,6 +29,9 @@ public class RiverActivity extends DaggerAppCompatActivity {
     RiverPresenter mRiversPresenter;
 
     @Inject
+    Lazy<MainFragment> mainFragmentProvider;
+
+    @Inject
     Lazy<RiverFragment> riverFragmentProvider;
 
     @Inject
@@ -39,7 +43,9 @@ public class RiverActivity extends DaggerAppCompatActivity {
     private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.contentFrame) {
         @Override
         protected Fragment createFragment(String screenKey, Object data) {
-            if(screenKey.equals("riverFragment"))
+            if(screenKey.equals("mainFragment"))
+                return mainFragmentProvider.get();
+            else if(screenKey.equals("riverFragment"))
                 return riverFragmentProvider.get();
             else if(screenKey.equals("postsFragment")) {
                 postsFragmentProvider.get().setRiver(data);
@@ -80,7 +86,7 @@ public class RiverActivity extends DaggerAppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
-            navigator.applyCommand(new Replace("riverFragment", 1));
+            navigator.applyCommand(new Replace("mainFragment", 1));
         }
     }
 

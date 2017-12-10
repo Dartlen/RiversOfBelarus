@@ -9,7 +9,8 @@ import by.project.dartlen.riversofbelarus.BaseView;
 
 public interface MainContract {
     interface Presenter extends BasePresenter<MainContract.View>{
-
+        void onClickedSignIn();
+        void onClickedSignUp();
     }
     interface  View extends BaseView<MainContract.Presenter>{
 

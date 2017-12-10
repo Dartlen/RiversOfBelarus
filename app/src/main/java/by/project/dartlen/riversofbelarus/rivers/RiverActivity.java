@@ -11,6 +11,8 @@ import by.project.dartlen.riversofbelarus.R;
 import by.project.dartlen.riversofbelarus.main.MainFragment;
 import by.project.dartlen.riversofbelarus.postinfo.PostInfoFragment;
 import by.project.dartlen.riversofbelarus.posts.PostsFragment;
+import by.project.dartlen.riversofbelarus.signin.SigninFragment;
+import by.project.dartlen.riversofbelarus.signup.SignupFragment;
 import dagger.Lazy;
 import dagger.android.support.DaggerAppCompatActivity;
 import ru.terrakok.cicerone.Navigator;
@@ -40,11 +42,21 @@ public class RiverActivity extends DaggerAppCompatActivity {
     @Inject
     Lazy<PostInfoFragment> postInfoFragmentProvider;
 
+    @Inject
+    Lazy<SigninFragment> signInFragmentProvider;
+
+    @Inject
+    Lazy<SignupFragment> signUpFragmentProvider;
+
     private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.contentFrame) {
         @Override
         protected Fragment createFragment(String screenKey, Object data) {
             if(screenKey.equals("mainFragment"))
                 return mainFragmentProvider.get();
+            else if(screenKey.equals("signInFragment"))
+                return signInFragmentProvider.get();
+            else if(screenKey.equals("signUpFragment"))
+                return signUpFragmentProvider.get();
             else if(screenKey.equals("riverFragment"))
                 return riverFragmentProvider.get();
             else if(screenKey.equals("postsFragment")) {

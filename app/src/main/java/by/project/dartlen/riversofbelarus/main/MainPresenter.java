@@ -34,4 +34,14 @@ public class MainPresenter implements MainContract.Presenter{
     public void takeView(MainContract.View view) {
         this.mMainView = view;
     }
+
+    @Override
+    public void onClickedSignIn() {
+        router.navigateTo("signInFragment");
+    }
+
+    @Override
+    public void onClickedSignUp() {
+        router.navigateTo("signUpFragment");
+    }
 }

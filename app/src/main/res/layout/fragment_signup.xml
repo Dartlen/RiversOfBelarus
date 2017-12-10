@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/main_background">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/editPhone"
+            android:hint="Номер телефона"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/text_color_white"
+            android:text="+375295990058"
+            android:textColor="@color/text_color_white"
+            android:textSize="34sp"
+            android:inputType="phone"
+            app:met_baseColor="@color/text_color_white"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="13"
+            app:met_primaryColor="@color/text_color_white"
+            app:met_singleLineEllipsis="true"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/editName"
+            android:hint="Имя"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/text_color_white"
+            android:text="dartlen"
+            android:textColor="@color/text_color_white"
+            android:textSize="34sp"
+            android:inputType="text"
+            app:met_baseColor="@color/text_color_white"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="13"
+            app:met_primaryColor="@color/text_color_white"
+            app:met_singleLineEllipsis="true"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/editPassword"
+            android:hint="Пароль"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/text_color_white"
+            android:text="qwerty"
+            android:textColor="@color/text_color_white"
+            android:textSize="34sp"
+            android:inputType="textPassword"
+            app:met_baseColor="@color/text_color_white"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="15"
+            app:met_primaryColor="@color/text_color_white"
+            app:met_singleLineEllipsis="true"/>
+
+    </LinearLayout>
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/btnSignUp"
+        android:text="@string/signup"
+        android:textColor="@color/text_color_white"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:buttonColor="@color/btnSignUp"
+        app:shadowColor="@color/btn_back"
+        app:shadowEnabled="true"
+        app:shadowHeight="5dp"
+        app:cornerRadius="4dp"/>
+
+</RelativeLayout>

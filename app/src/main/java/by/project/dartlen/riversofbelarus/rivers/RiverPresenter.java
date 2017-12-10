@@ -48,6 +48,7 @@ final public class RiverPresenter implements RiversContract.Presenter{
         mRiversRepository.getRivers(new LoadRiversCallback() {
             @Override
             public void onRiversLoaded(HashSet<String> riversList) {
+
                 mRiversView.showRivers(riversList);
             }
 
@@ -67,4 +68,6 @@ final public class RiverPresenter implements RiversContract.Presenter{
     public void onRecyclerViewClicked(String nameRiver) {
         router.navigateTo("postsFragment", nameRiver);
     }
+
+
 }

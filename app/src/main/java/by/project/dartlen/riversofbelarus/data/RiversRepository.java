@@ -1,5 +1,7 @@
 package by.project.dartlen.riversofbelarus.data;
 
+import android.support.v7.app.AppCompatDelegate;
+
 import org.greenrobot.greendao.annotation.NotNull;
 
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import javax.inject.Singleton;
 
 import by.project.dartlen.riversofbelarus.data.remote.Post;
 import by.project.dartlen.riversofbelarus.data.remote.RiversRemoteData;
+import by.project.dartlen.riversofbelarus.data.remote.User;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -23,7 +26,7 @@ public class RiversRepository {
     final private RiversRemoteData mRiversRemoteData;
     private HashSet<String> listRivers = new HashSet<>();
     private HashSet<String> listPosts = new HashSet<>();
-
+    private User User;
     @Inject
     RiversRepository(@Remote RiversRemoteData riversRepository){
         mRiversRemoteData = riversRepository;
@@ -78,4 +81,39 @@ public class RiversRepository {
             }
         });
     }
+
+    public void getUser(final @NotNull LoadUserCallback callback, final String phone){
+        mRiversRemoteData.getUser(new LoadUserCallback() {
+            @Override
+            public void onUserLoaded(User user) {
+                callback.onUserLoaded(user);
+            }
+
+            @Override
+            public void onDataNotAvailable(String error) {
+                callback.onDataNotAvailable(error);
+            }
+        }, phone);
+    }
+
+    public void registerUser(final @NotNull LoadUserCallback callback,@NotNull final String phone,
+                             @NotNull final String name, @NotNull final String password) {
+
+        mRiversRemoteData.registerUser(new LoadUserCallback() {
+            @Override
+            public void onUserLoaded(User user) {
+                User=user;
+                callback.onUserLoaded(user);
+            }
+
+            @Override
+            public void onDataNotAvailable(String error) {
+                    if(User==null) {
+                        callback.onDataNotAvailable(error);
+                    }
+
+            }
+        }, new User(name,password), phone);
+    }
+
 }

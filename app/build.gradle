@@ -61,6 +61,7 @@ dependencies {
 
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.firebaseui:firebase-ui-database:0.4.3'
+    compile 'co.infinum:materialdatetimepicker-support:3.3.1'
 
 }
 

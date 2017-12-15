@@ -12,6 +12,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
+import java.util.Calendar;
 
 import javax.inject.Inject;
 
@@ -19,23 +26,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.project.dartlen.riversofbelarus.R;
 import by.project.dartlen.riversofbelarus.data.remote.Post;
-import dagger.Binds;
 import dagger.android.support.DaggerFragment;
-import ru.terrakok.cicerone.Router;
+
 
 /***
  * Created by Dartlen on 26.11.2017.
  */
 
-public class PostInfoFragment extends DaggerFragment implements PostInfoContract.View {
+public class PostInfoFragment extends DaggerFragment implements PostInfoContract.View,
+        DatePickerDialog.OnDateSetListener {
 
     public PostInfoAdapter adapter;
     public Post dataPost = new Post();
-    @Inject
-    PostInfoContract.Presenter mPostInfoPresenter;
 
     @Inject
-    Router router;
+    PostInfoContract.Presenter mPostInfoPresenter;
 
     @Inject
     public PostInfoFragment(){}
@@ -43,10 +48,12 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
     @BindView(R.id.recycler_view_post_info)
     RecyclerView mRecyclerView;
 
+    @BindView(R.id.calendar)
+    ImageView calendar;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Nullable
@@ -67,7 +74,9 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
         ((AppCompatActivity)getActivity()).supportStartPostponedEnterTransition();
 
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) root.findViewById(R.id.collapsing_toolbar);
+
         AppBarLayout appBarLayout = (AppBarLayout) root.findViewById(R.id.app_bar_layout);
+
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
             int scrollRange = -1;
@@ -96,6 +105,21 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
             }
         });
 
+        Calendar now = Calendar.getInstance();
+        final DatePickerDialog dpd = DatePickerDialog.newInstance(
+                this,
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
+        );
+
+
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dpd.show(getFragmentManager(),"calendar");
+            }
+        });
 
         mRecyclerView.setHasFixedSize(true);
 
@@ -110,6 +134,11 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
         mPostInfoPresenter.loadPosts();
 
         return root;
+    }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        //TODO: изменить отображаемые элементы в рецейкле
     }
 
     @Override

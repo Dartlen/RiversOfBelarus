@@ -12,15 +12,15 @@
 
         <TextView
             android:id="@+id/Date"
-            android:layout_width="wrap_content"
+            android:layout_width="211dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="georgia"
             android:gravity="center_horizontal|center_vertical"
-            android:text="20 Октября   2017 "
+            android:text="20 Октября 2017"
             android:textSize="12sp"
             android:textStyle="bold" />
-
+        <!--android:gravity="center_horizontal|center_vertical"-->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,36 +71,61 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:padding="5dp"
                     android:paddingLeft="10dp">
 
-                    <TextView
-                        android:id="@+id/LevelValue"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="georgia"
-                        android:text="360(+10)"
-                        android:textColor="@color/text_color_white"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/TemperatureValue"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="georgia"
-                        android:text="17 °C"
-                        android:textColor="@color/text_color_white"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/LevelValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="georgia"
+                            android:text="360(+10)"
+                            android:textColor="@color/text_color_white"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/ConditionValue"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="georgia"
-                        android:text="чисто"
-                        android:textColor="@color/text_color_white"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/TemperatureValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="georgia"
+                            android:text="17 °C"
+                            android:textColor="@color/text_color_white"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/ConditionValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="georgia"
+                            android:text="чисто"
+                            android:textColor="@color/text_color_white"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:visibility="invisible">
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:srcCompat="@drawable/ic_notes" />
+                    </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
 

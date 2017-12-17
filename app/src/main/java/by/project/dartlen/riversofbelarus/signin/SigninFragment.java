@@ -17,12 +17,14 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.project.dartlen.riversofbelarus.R;
+import by.project.dartlen.riversofbelarus.di.scopes.ActivityScope;
 import dagger.android.support.DaggerFragment;
 
 /***
  * Created by Dartlen on 09.12.2017.
  */
 
+@ActivityScope
 public class SigninFragment extends DaggerFragment implements SigninContract.View{
 
     @Inject

@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import by.project.dartlen.riversofbelarus.R;
 import by.project.dartlen.riversofbelarus.main.MainFragment;
+import by.project.dartlen.riversofbelarus.notes.NotesFragment;
 import by.project.dartlen.riversofbelarus.postinfo.PostInfoFragment;
 import by.project.dartlen.riversofbelarus.posts.PostsFragment;
 import by.project.dartlen.riversofbelarus.signin.SigninFragment;
@@ -48,6 +49,9 @@ public class RiverActivity extends DaggerAppCompatActivity {
     @Inject
     Lazy<SignupFragment> signUpFragmentProvider;
 
+    @Inject
+    Lazy<NotesFragment> notesFragmentProvider;
+
     private Navigator navigator = new SupportFragmentNavigator(getSupportFragmentManager(), R.id.contentFrame) {
         @Override
         protected Fragment createFragment(String screenKey, Object data) {
@@ -65,6 +69,9 @@ public class RiverActivity extends DaggerAppCompatActivity {
             }else if(screenKey.equals("postInfoFragment")){
                 postInfoFragmentProvider.get().setPost(data);
                 return postInfoFragmentProvider.get();
+            }else if(screenKey.equals("notesFragment")){
+                notesFragmentProvider.get().setNotes(data);
+                return notesFragmentProvider.get();
             }
             return null;
         }

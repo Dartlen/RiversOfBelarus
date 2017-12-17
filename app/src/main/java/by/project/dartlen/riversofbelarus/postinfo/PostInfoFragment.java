@@ -13,10 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
@@ -25,6 +27,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.project.dartlen.riversofbelarus.R;
+import by.project.dartlen.riversofbelarus.data.remote.Day;
 import by.project.dartlen.riversofbelarus.data.remote.Post;
 import dagger.android.support.DaggerFragment;
 
@@ -50,6 +53,13 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
 
     @BindView(R.id.calendar)
     ImageView calendar;
+
+    @BindView(R.id.levelToolbar)
+    TextView levelToolbar;
+
+    @BindView(R.id.temperatureToolbar)
+    TextView temperatureToolbar;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,7 +97,9 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle("Сегодня: 450(+0);Т:18°C");
+
+                    collapsingToolbarLayout.setTitle("Сегодня: "+dataPost.getDays().get(0).getLevel()+";Т:"+
+                            dataPost.getDays().get(0).getTemperature()+"°C");//"Сегодня: 450(+0);Т:18°C");
 
                     isShow = true;
                 } else if(isShow) {
@@ -113,13 +125,20 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
                 now.get(Calendar.DAY_OF_MONTH)
         );
 
-
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dpd.show(getFragmentManager(),"calendar");
             }
         });
+
+        ItemClickSupport.addTo(mRecyclerView)
+                .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                        mPostInfoPresenter.onClickedDay(dataPost.getDays().get(position));
+                    }
+                });
 
         mRecyclerView.setHasFixedSize(true);
 
@@ -139,6 +158,9 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         //TODO: изменить отображаемые элементы в рецейкле
+
+        for(Day x : dataPost.getDays())
+            x.getTo();
     }
 
     @Override
@@ -161,6 +183,8 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
     @Override
     public void showDays(Post dataPost) {
         this.dataPost = dataPost;
+        temperatureToolbar.setText(dataPost.getDays().get(0).getTemperature()+"°C");
+        levelToolbar.setText(dataPost.getDays().get(0).getLevel()+"");
         adapter.clearAll();
         adapter.notifyDataSetChanged();
         adapter.setPost(dataPost);

@@ -2,6 +2,7 @@ package by.project.dartlen.riversofbelarus.postinfo;
 
 import by.project.dartlen.riversofbelarus.BasePresenter;
 import by.project.dartlen.riversofbelarus.BaseView;
+import by.project.dartlen.riversofbelarus.data.remote.Day;
 import by.project.dartlen.riversofbelarus.data.remote.Post;
 
 /***
@@ -12,6 +13,7 @@ public interface PostInfoContract {
     interface Presenter extends BasePresenter<PostInfoContract.View>{
         void onToolbarBackClicked();
         void setPost(String namePost);
+        void onClickedDay(Day day);
         void loadPosts();
     }
 

@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 
 import by.project.dartlen.riversofbelarus.R;
@@ -44,6 +46,11 @@ public class PostInfoAdapter extends RecyclerView.Adapter<PostInfoViewHolder>{
         holder.Temperature.setText(data.getDays().get(position).getTemperature().toString());
         holder.Level.setText(data.getDays().get(position).getLevel().toString());
         holder.Condition.setText(data.getDays().get(position).getIce().toString());
+
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String today = formatter.format(data.getDays().get(position).getTo());
+
+        holder.Date.setText(today);
         changedLevel(position, holder);
     }
 

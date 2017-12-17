@@ -5,6 +5,7 @@ import javax.inject.Inject;
 
 import by.project.dartlen.riversofbelarus.data.LoadPostDataCallback;
 import by.project.dartlen.riversofbelarus.data.RiversRepository;
+import by.project.dartlen.riversofbelarus.data.remote.Day;
 import by.project.dartlen.riversofbelarus.data.remote.Post;
 import by.project.dartlen.riversofbelarus.posts.PostsContract;
 import ru.terrakok.cicerone.Router;
@@ -63,5 +64,10 @@ public class PostInfoPresenter implements PostInfoContract.Presenter{
 
             }
         }, namePost);
+    }
+
+    @Override
+    public void onClickedDay(Day day) {
+        router.navigateTo("notesFragment", day);
     }
 }

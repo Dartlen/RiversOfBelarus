@@ -1,5 +1,6 @@
-package by.project.dartlen.riversofbelarus.signup;
+package by.project.dartlen.riversofbelarus.notes;
 
+import butterknife.BindView;
 import by.project.dartlen.riversofbelarus.di.scopes.ActivityScope;
 import by.project.dartlen.riversofbelarus.di.scopes.FragmentScope;
 import dagger.Binds;
@@ -7,17 +8,14 @@ import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
 /***
- * Created by Dartlen on 09.12.2017.
+ * Created by Dartlen on 17.12.2017.
  */
-
 @Module
-public abstract class SignupModule {
-
+public abstract class NotesModule {
     @FragmentScope
     @ContributesAndroidInjector
-    abstract SignupFragment signupFragment();
+    abstract NotesFragment notesFragment();
 
     @ActivityScope
-    @Binds abstract SignupContract.Presenter signupPresenter(SignupPresenter presenter);
-
+    @Binds abstract NotesContract.Presenter notesPresenter(NotesPresenter presenter);
 }

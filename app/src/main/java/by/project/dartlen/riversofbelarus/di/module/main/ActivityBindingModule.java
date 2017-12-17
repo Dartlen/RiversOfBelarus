@@ -2,6 +2,7 @@ package by.project.dartlen.riversofbelarus.di.module.main;
 
 import by.project.dartlen.riversofbelarus.di.scopes.ActivityScope;
 import by.project.dartlen.riversofbelarus.main.MainModule;
+import by.project.dartlen.riversofbelarus.notes.NotesModule;
 import by.project.dartlen.riversofbelarus.postinfo.PostInfoModule;
 import by.project.dartlen.riversofbelarus.posts.PostsModule;
 import by.project.dartlen.riversofbelarus.rivers.RiverActivity;
@@ -20,6 +21,6 @@ public abstract class ActivityBindingModule {
 
     @ActivityScope
     @ContributesAndroidInjector(modules = {RiverModule.class, MainModule.class, SigninModule.class,
-            SignupModule.class, PostsModule.class, PostInfoModule.class})
+            SignupModule.class, PostsModule.class, PostInfoModule.class, NotesModule.class})
     abstract RiverActivity riverActivity();
 }

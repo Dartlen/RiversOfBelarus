@@ -16,6 +16,7 @@ import by.project.dartlen.riversofbelarus.R;
  */
 
 public class PostInfoViewHolder extends RecyclerView.ViewHolder{
+
     @BindView(R.id.layout_day_info)
     LinearLayout linearLayout;
     @BindView(R.id.LevelValue)
@@ -24,9 +25,13 @@ public class PostInfoViewHolder extends RecyclerView.ViewHolder{
     TextView Temperature;
     @BindView(R.id.ConditionValue)
     TextView Condition;
+    @BindView(R.id.Date)
+    TextView Date;
 
     public PostInfoViewHolder(View v){
         super(v);
         ButterKnife.bind(this, v);
     }
+
+
 }

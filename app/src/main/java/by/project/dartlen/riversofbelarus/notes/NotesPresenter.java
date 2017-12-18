@@ -39,6 +39,6 @@ public class NotesPresenter implements NotesContract.Presenter{
 
     @Override
     public void setNotes(Day day) {
-        //TODO: loading notes if they exits
+
     }
 }

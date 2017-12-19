@@ -3,4 +3,5 @@
     <string name="signup">РЕГИСТРАЦИЯ</string>
     <string name="signin">ВХОД</string>
     <string name="number_phone">Номер телефона</string>
+    <string name="nonotes">Нет записей</string>
 </resources>

@@ -113,6 +113,7 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                mPostInfoPresenter.onToolbarBackClicked();
             }
         });
@@ -136,7 +137,6 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-
                         mPostInfoPresenter.onClickedDay(dataPost.getDays().get(position));
                     }
                 });

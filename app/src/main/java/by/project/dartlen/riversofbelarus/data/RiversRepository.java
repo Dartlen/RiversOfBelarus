@@ -1,16 +1,16 @@
 package by.project.dartlen.riversofbelarus.data;
 
-import android.support.v7.app.AppCompatDelegate;
-
 import org.greenrobot.greendao.annotation.NotNull;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import by.project.dartlen.riversofbelarus.data.remote.Day;
+import by.project.dartlen.riversofbelarus.data.remote.Note;
+import by.project.dartlen.riversofbelarus.data.remote.Notes;
 import by.project.dartlen.riversofbelarus.data.remote.Post;
 import by.project.dartlen.riversofbelarus.data.remote.RiversRemoteData;
 import by.project.dartlen.riversofbelarus.data.remote.User;
@@ -27,6 +27,7 @@ public class RiversRepository {
     private HashSet<String> listRivers = new HashSet<>();
     private HashSet<String> listPosts = new HashSet<>();
     private User User;
+    private String Phone;
     @Inject
     RiversRepository(@Remote RiversRemoteData riversRepository){
         mRiversRemoteData = riversRepository;
@@ -86,6 +87,8 @@ public class RiversRepository {
         mRiversRemoteData.getUser(new LoadUserCallback() {
             @Override
             public void onUserLoaded(User user) {
+                User=user;
+                Phone=phone;
                 callback.onUserLoaded(user);
             }
 
@@ -103,6 +106,7 @@ public class RiversRepository {
             @Override
             public void onUserLoaded(User user) {
                 User=user;
+                Phone=phone;
                 callback.onUserLoaded(user);
             }
 
@@ -116,4 +120,17 @@ public class RiversRepository {
         }, new User(name,password), phone);
     }
 
+    public void loadNotes(final @NotNull LoadNotesCallback callback, @NotNull final Day day){
+        mRiversRemoteData.loadNotes(new LoadNotesCallback() {
+            @Override
+            public void onNoteDataLoaded(List<Note> notesData) {
+                callback.onNoteDataLoaded(notesData);
+            }
+
+            @Override
+            public void onDataNotAvailable(String error) {
+                callback.onDataNotAvailable(error);
+            }
+        }, Phone, day);
+    }
 }

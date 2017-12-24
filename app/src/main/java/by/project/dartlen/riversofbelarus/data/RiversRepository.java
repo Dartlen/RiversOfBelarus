@@ -2,6 +2,7 @@ package by.project.dartlen.riversofbelarus.data;
 
 import org.greenrobot.greendao.annotation.NotNull;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -10,7 +11,6 @@ import javax.inject.Singleton;
 
 import by.project.dartlen.riversofbelarus.data.remote.Day;
 import by.project.dartlen.riversofbelarus.data.remote.Note;
-import by.project.dartlen.riversofbelarus.data.remote.Notes;
 import by.project.dartlen.riversofbelarus.data.remote.Post;
 import by.project.dartlen.riversofbelarus.data.remote.RiversRemoteData;
 import by.project.dartlen.riversofbelarus.data.remote.User;
@@ -120,7 +120,8 @@ public class RiversRepository {
         }, new User(name,password), phone);
     }
 
-    public void loadNotes(final @NotNull LoadNotesCallback callback, @NotNull final Day day){
+    public void loadNotes(final @NotNull LoadNotesCallback callback, @NotNull final Day day,
+                          @NotNull final String namePost){
         mRiversRemoteData.loadNotes(new LoadNotesCallback() {
             @Override
             public void onNoteDataLoaded(List<Note> notesData) {
@@ -131,6 +132,21 @@ public class RiversRepository {
             public void onDataNotAvailable(String error) {
                 callback.onDataNotAvailable(error);
             }
-        }, Phone, day);
+        }, Phone, day, namePost);
+    }
+
+    public void postNote(final @NotNull LoadPostNoteCallback callback, @NotNull final String note,
+                         @NotNull final Date date, @NotNull final String namepost ){
+        mRiversRemoteData.postNote(new LoadPostNoteCallback() {
+            @Override
+            public void onNoteDataLoaded(String noteData) {
+                callback.onNoteDataLoaded(noteData);
+            }
+
+            @Override
+            public void onDataNotAvailable(String error) {
+                callback.onDataNotAvailable(error);
+            }
+        }, note, date, Phone, namepost );
     }
 }

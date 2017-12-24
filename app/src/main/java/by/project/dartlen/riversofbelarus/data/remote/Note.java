@@ -11,23 +11,24 @@ import java.util.Date;
  */
 @IgnoreExtraProperties
 public class Note {
-    Long post;
+    String post;
     String text;
     Date to;
+    String key = "";
 
-    public Long getPost() {
+    public String getPost() {
         return post;
     }
 
-    public Date getTo() {
-        return to;
+    public String getTo() {
+        return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(to);
     }
 
     public String getText() {
         return text;
     }
 
-    public void setPost(Long post) {
+    public void setPost(String post) {
         this.post = post;
     }
 
@@ -37,6 +38,14 @@ public class Note {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
     }
 
     public Date strDateToDate(String dateStr){

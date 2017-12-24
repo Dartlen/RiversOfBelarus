@@ -1,11 +1,19 @@
 package by.project.dartlen.riversofbelarus.postinfo;
 
+import android.util.ArrayMap;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 
+import by.project.dartlen.riversofbelarus.Utils.Container;
 import by.project.dartlen.riversofbelarus.data.LoadPostDataCallback;
 import by.project.dartlen.riversofbelarus.data.RiversRepository;
 import by.project.dartlen.riversofbelarus.data.remote.Day;
+import by.project.dartlen.riversofbelarus.data.remote.Note;
 import by.project.dartlen.riversofbelarus.data.remote.Post;
 import by.project.dartlen.riversofbelarus.posts.PostsContract;
 import ru.terrakok.cicerone.Router;
@@ -68,6 +76,8 @@ public class PostInfoPresenter implements PostInfoContract.Presenter{
 
     @Override
     public void onClickedDay(Day day) {
-        router.navigateTo("notesFragment", day);
+
+        Container tmp = new Container(day, namePost);
+        router.navigateTo("notesFragment", tmp);
     }
 }

@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NoteViewHolder>{
     @Override
     public void onBindViewHolder(NoteViewHolder holder, int position) {
         holder.note_text.setText(notes.get(position).getText());
+
+
+        //String today = ;
+
+        holder.note_date.setText(notes.get(position).getTo());
     }
 
     @Override

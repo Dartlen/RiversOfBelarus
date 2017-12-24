@@ -16,6 +16,8 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.note_text)
     TextView note_text;
+    @BindView(R.id.note_date)
+    TextView note_date;
 
     public NoteViewHolder(View v){
         super(v);

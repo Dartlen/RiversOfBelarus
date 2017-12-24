@@ -13,12 +13,14 @@ import by.project.dartlen.riversofbelarus.data.remote.Note;
 
 public interface NotesContract {
     interface Presenter extends BasePresenter<NotesContract.View>{
-        void setNotes(Day day);
+        void setNotes(Object day);
         void onToolbarBackClicked();
         void loadNotes();
+        void fabClicked(String text);
     }
     interface View extends BaseView<NotesContract.Presenter>{
         void setNotes(Object data);
         void showNotes(List<Note> notesData);
+        void showError(String Value);
     }
 }

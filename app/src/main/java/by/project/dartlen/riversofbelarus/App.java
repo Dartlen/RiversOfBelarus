@@ -11,7 +11,6 @@ import by.project.dartlen.riversofbelarus.di.AppComponent;
 import by.project.dartlen.riversofbelarus.di.DaggerAppComponent;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
-import ru.terrakok.cicerone.NavigatorHolder;
 
 /***
  * Created by Dartlen on 21.11.2017.

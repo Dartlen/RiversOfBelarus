@@ -79,7 +79,8 @@ public class NotesFragment extends DaggerFragment implements NotesContract.View{
             @Override
             public void onClick(View v) {
                 LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getActivity());
-                View mView = layoutInflaterAndroid.inflate(R.layout.input_dialog, null);
+
+                final View mView = layoutInflaterAndroid.inflate(R.layout.input_dialog, null);
                 AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(getActivity());
                 alertDialogBuilderUserInput.setView(mView);
 
@@ -88,7 +89,7 @@ public class NotesFragment extends DaggerFragment implements NotesContract.View{
                         .setCancelable(false)
                         .setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogBox, int id) {
-                                // ToDo get user input here
+                                mNotesPresenter.fabClicked(userInputDialogEditText.getText().toString());
                             }
                         })
 
@@ -121,8 +122,14 @@ public class NotesFragment extends DaggerFragment implements NotesContract.View{
     @Override
     public void onResume() {
         super.onResume();
-
+        notes = null;
         mNotesPresenter.takeView(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        notes = null;
     }
 
     @Override
@@ -133,7 +140,7 @@ public class NotesFragment extends DaggerFragment implements NotesContract.View{
 
     @Override
     public void setNotes(Object data) {
-        mNotesPresenter.setNotes((Day)data);
+        mNotesPresenter.setNotes(data);
     }
 
     @Override
@@ -143,6 +150,20 @@ public class NotesFragment extends DaggerFragment implements NotesContract.View{
         adapter.clearAll();
         adapter.notifyDataSetChanged();
         adapter.setNotes(notesData);
+    }
+
+    @Override
+    public void showError(String messtageError) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final AlertDialog alert = builder.create();
+
+        builder.setMessage(messtageError).setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                alert.cancel();
+            }
+        });
 
     }
 }

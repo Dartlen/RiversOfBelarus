@@ -9,6 +9,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -62,6 +63,19 @@ dependencies {
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.firebaseui:firebase-ui-database:0.4.3'
     compile 'co.infinum:materialdatetimepicker-support:3.3.1'
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    })
+
+    debugCompile 'org.mockito:mockito-core:2.13.0'
+    debugCompile "com.google.dexmaker:dexmaker:1.2"
+    debugCompile "com.linkedin.dexmaker:dexmaker-mockito:2.2.0"
+
 
 }
 

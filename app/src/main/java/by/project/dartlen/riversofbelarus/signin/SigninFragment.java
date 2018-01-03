@@ -33,7 +33,7 @@ public class SigninFragment extends DaggerFragment implements SigninContract.Vie
     @Inject
     public SigninFragment(){}
 
-    @BindView(R.id.btnSignIn)
+    @BindView(R.id.buttonSignIn)
     Button btnSignIn;
 
     @BindView(R.id.editPassword)

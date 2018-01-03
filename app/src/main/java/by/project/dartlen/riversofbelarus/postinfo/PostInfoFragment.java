@@ -125,6 +125,8 @@ public class PostInfoFragment extends DaggerFragment implements PostInfoContract
                 now.get(Calendar.MONTH),
                 now.get(Calendar.DAY_OF_MONTH)
         );
+        dpd.setAccentColor(getResources().getColor(R.color.postInfo_colorFirst));
+
 
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
